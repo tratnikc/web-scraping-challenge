@@ -11,10 +11,10 @@ def init_browser():
     executable_path = {'executable_path': "/usr/local/bin/chromedriver"}
     return Browser('chrome', **executable_path, headless=False)
 
-
+# NASA Mars News
 def scrape_info():
     browser = init_browser()
-    # visit NASA Mars News website 'https://mars.nasa.gov/news/'
+    # visit NASA Mars News website https://mars.nasa.gov/news/
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
 
@@ -37,58 +37,45 @@ def scrape_info():
     return news_title, news_paragraph
 
 
+# JPL Mars Space Images - Featured Image
+def mars_featured_image():
+    browser = init_browser()
+    jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
+    browser.visit(jpl_url)
+    image_button = browser.find_by_id('full_image')
+    image_button.click()
+    more_info = browser.links.find_by_partial_text('more info')
+    more_info.click()
 
-jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
-browser.visit(jpl_url)
-image_button = browser.find_by_id('full_image')
-image_button.click()
-more_info = browser.links.find_by_partial_text('more info')
-more_info.click()
+    html = browser.html
+    soup = bs(html, 'html.parser')
 
-html = browser.html
-soup = bs(html, 'html.parser')
+    img_url = soup.find('img', class_='main_image')['src']
 
-img_url = soup.find('img', class_='main_image')['src']
- 
+    url = jpl_url.split('spaceimages')[0]
+    url = url[:-1]
 
-
-# %%
-url = jpl_url.split('spaceimages')[0]
-url = url[:-1]
-url
-
-
-# %%
-featured_image_url = url + img_url
-print(featured_image_url)
-
-# %% [markdown]
-# **Mars Facts**
-
-# %%
-facts_url = 'https://space-facts.com/mars/'
-browser.visit(facts_url)
+    featured_image_url = url + img_url
+    return featured_image_url
 
 
-# %%
-facts_df = pd.read_html(facts_url)[0]
+# Mars Facts
+def mars_facts():
+    browser = init_browser()
+    facts_url = 'https://space-facts.com/mars/'
+    browser.visit(facts_url)
+
+    facts_df = pd.read_html(facts_url)[0]
+
+    facts_df.columns=["Description","Mars"]
+
+    facts_df.set_index("Description", inplace=True)
+
+    facts_df
 
 
-# %%
-facts_df.columns=["Description","Mars"]
+# Mars Hemispheres
 
-
-# %%
-facts_df.set_index("Description", inplace=True)
-
-
-# %%
-facts_df
-
-# %% [markdown]
-# **Mars Hemispheres**
-
-# %%
 h_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
 browser.visit(h_url)
 
