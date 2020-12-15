@@ -56,6 +56,9 @@ def mars_featured_image():
     url = url[:-1]
 
     featured_image_url = url + img_url
+    
+    browser.quit()
+
     return featured_image_url
 
 
@@ -72,54 +75,48 @@ def mars_facts():
     facts_df.set_index("Description", inplace=True)
 
     facts_df
+    browser.quit()
+
+    return  # return data here
 
 
 # Mars Hemispheres
+def mars_hemisphere():
+    browser = init_browser()
+    h_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+    browser.visit(h_url)
 
-h_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-browser.visit(h_url)
-
-
-# %%
-hemi_url = h_url.split('search')[0]
-hemi_url
+    hemi_url = h_url.split('search')[0]
 
 
-# %%
-html = browser.html
-soup = bs(html, 'html.parser')
+    html = browser.html
+    soup = bs(html, 'html.parser')
 
-divs = soup.find_all('div', class_ = 'collapsible results')
+    divs = soup.find_all('div', class_ = 'collapsible results')
 
-hemisphere_img_urls = []
-for div in divs:
-    items = div.find_all('div', class_='item')
-    for item in items:
-        dict_sphere  = {}
-        
-        href = item.find('a')['href']
-        href = hemi_url + href
-        title = item.find('h3').get_text()
+    hemisphere_img_urls = []
+    for div in divs:
+        items = div.find_all('div', class_='item')
+        for item in items:
+            dict_sphere  = {}
+            
+            href = item.find('a')['href']
+            href = hemi_url + href
+            title = item.find('h3').get_text()
 
-        browser.visit(href)
-        time.sleep(2)
-        img_link = browser.links.find_by_text('Sample').first['href']
-        
-        dict_sphere["title"] = title
-        dict_sphere["img_url"] = img_link
-        
-        hemisphere_img_urls.append(dict_sphere)
+            browser.visit(href)
+            time.sleep(2)
+            img_link = browser.links.find_by_text('Sample').first['href']
+            
+            dict_sphere["title"] = title
+            dict_sphere["img_url"] = img_link
+            
+            hemisphere_img_urls.append(dict_sphere)
 
+    browser.quit()
 
-# %%
-hemisphere_img_urls
+    return hemisphere_img_urls
 
-
-# %%
-browser.quit()
-
-
-# %%
 
 
 
