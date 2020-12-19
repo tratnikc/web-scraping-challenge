@@ -5,6 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
 
+import pymongo
 # chrome driver
 # initialize brower MAC
 def init_browser():
