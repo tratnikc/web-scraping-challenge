@@ -9,46 +9,49 @@
         <link rel="stylesheet" href="assets/styles.css">
     </head>
     <body>
-        <div class="container-fluid">
+        <div class="container">
+            <!-- jumbotron -->
             <div class="jumbotron text-center">
                 <h1>Mission to Mars</h1>
                 <a class="button" href="/scrape">Scrape New Data</a>
             </div>
 
-            <div>
+            <!-- mars news -->
+            <div class="container">
+                <h3>Latest Mars News</h3>
+                <h5>{{mars_record.news_title}}</h5>
+                <p>{{mars_record.news_paragraph}}</p>
+            </div>
 
-                <div class="container">
-                    <div class="row">
-                      <div class="col">
-                        <h3>Latest Mars News</h3>
-                      </div>
+            <!-- featured image url -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <h3>Featured Mars Image</h3>
+                        <img src="{{ mars_record.featured_image_url }}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
                     </div>
-                    <div class="row">
-                        <div class="col">
-                          <h4>{{mars_record.news_title}}</h4>
-                        </div>
+                    <div class="col-6 col-md-4">
+                        <h3>Mars Facts</h3>
+                        <div>{{ mars_record.mars_facts |safe}}</div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                          <p>{{mars_record.news_paragraph}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                          <h3>Featured Mars Image</h3>
-                          <img src="{{ mars_record.featured_image_url }}" class="img-featured" alt="Mars Featured Image">
-                        </div>
-                        <div class="col-4">
-                            <h3>Mars Facts</h3>
-                            <div>{{ mars_record.mars_facts}}</div>
-                          </div>
+                </div>
+            </div>
+            
+            <!-- hemispheres -->
   
-                      </div>
-  
-                    
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">col-sm</div>
+                    <div class="col-sm">col-sm</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">col-sm</div>
+                    <div class="col-sm">col-sm</div>
                 </div>
 
-            </div>
+            </div>   
+                
 
         </div>
             
@@ -56,6 +59,14 @@
         <a href="/scrape">Scrape Now!</a>
 
         <li>{{ mars_record["news_title"] }}</li>
+
+        <!-- bootstrap CDN -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     </body>
 </html>
