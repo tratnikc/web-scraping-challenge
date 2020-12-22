@@ -129,12 +129,8 @@ def insert_into_mongo():
     print(mars_dict)
 
 # insert to data to mars_info collection
-    data.insert(
-        [
-            mars_dict
-        ]
-    )
-    print('inserted')
+    rec = data.insert_one(mars_dict)
+    
 
 
 

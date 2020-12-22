@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="assets/styles.css">
     </head>
     <body>
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
             <div class="jumbotron text-center">
                 <h1>Mission to Mars</h1>
                 <a class="button" href="/scrape">Scrape New Data</a>
@@ -50,13 +50,14 @@
                 {% endfor %}
             </div>
 
-        </div>
-    
-        {% for rec in mars_record %}
-        <li>{{ rec.news_title }}</li>
-        {% endfor %}
-        
+        </div> -->
+            
         
         <a href="/scrape">Scrape Now!</a>
+
+        <!-- {% for rec in mars_record %} -->
+        <li>{{ mars_record.news_title }}</li>
+        <!-- {% endfor %} -->
+
     </body>
 </html>
