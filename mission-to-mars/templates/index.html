@@ -55,9 +55,9 @@
         
         <a href="/scrape">Scrape Now!</a>
 
-        <!-- {% for rec in mars_record %} -->
-        <li>{{ mars_record.news_title }}</li>
-        <!-- {% endfor %} -->
+        {% for rec in mars_record %}
+        <li>{{ rec.news_title }}</li>
+        {% endfor %}
 
     </body>
 </html>
