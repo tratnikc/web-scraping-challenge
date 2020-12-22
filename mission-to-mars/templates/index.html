@@ -43,22 +43,28 @@
             <h3 class="text-center">Mars Hemispheres</h3>
             <div class="container">
                 <hr>
-                {% for img in mars_record.hemispheres %}
+                
                 <div class="card-deck">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="row">
+                            <!-- create a card deck inside the row -->
+                            {% for img in mars_record.hemispheres %}
                             <div class="col-md-6">
-                                <img class="card-img-top" src="{{ img.img_url }}" alt="{{ img.title }}">
-                                <div class="card-body">
-                                  <h6 class="card-title">{{ img.title }}</h6>
+                                <div class="card text-dark bg-white" style="max-width: 100%;">
+                                    <img class="card-img-top" src="{{ img.img_url }}" alt="{{ img.title }}">
+                                    <div class="card-body">
+                                        <h6 class="card-title">{{ img.title }}</h6>
+                                    </div>
+                                
                                 </div>
                             </div>
-                            
+                            {% endfor %}
                         </div>
+
                     </div>
                     
                 </div>
-                {% endfor %}
+                
 
             </div>   
                 
