@@ -34,6 +34,9 @@ def scrape_all():
         news_title = article.find('div', class_ = 'content_title').get_text()
         news_paragraph = article.find('div', class_='article_teaser_body').get_text()
 
+    mars_dict['news_title'] = news_title
+    mars_dict['news_paragraph'] = news_paragraph
+
 
 # JPL Mars Space Images - Featured Image
 # --------------------------------------
@@ -53,6 +56,7 @@ def scrape_all():
     url = url[:-1]
 
     featured_image_url = url + img_url
+    mars_dict['featured_image_url'] = featured_image_url
 
 
 # Mars Facts
@@ -69,6 +73,7 @@ def scrape_all():
 
 # convert dataframe to html
     facts_html = facts_df.to_html()
+    mars_dict['mars_facts'] = facts_html
 
 
 # Mars Hemispheres
@@ -104,12 +109,13 @@ def scrape_all():
             hemisphere_img_urls.append(dict_sphere)
 
     browser.quit()
-    mars_dict = {"news_title": news_title,
-             "news_paragraph" : news_paragraph,
-             "featured_image_url" : featured_image_url,
-             "mars_facts" : facts_html,
-             "hemispheres" : hemisphere_img_urls
-            }
+    mars_dict['hemispheres'] = hemisphere_img_urls
+    # mars_dict = {"news_title": news_title,
+    #          "news_paragraph" : news_paragraph,
+    #          "featured_image_url" : featured_image_url,
+    #          "mars_facts" : facts_html,
+    #          "hemispheres" : hemisphere_img_urls
+    #         }
     
 
 
@@ -123,16 +129,16 @@ def scrape_all():
 # select database and collection to use; database is mars_db
     db = client.mars_db
 
+    for x in client.list_databases():
+        print(x)
+
 # collection is called mars_info
     data = db.mars_info
-
-    print(mars_dict)
 
 # insert to data to mars_info collection
     data.insert_one(mars_dict)
 
     record = db.mars_info.find_one()
-    print("SCRAPE AFTER INSERT" + record)
     
 
 

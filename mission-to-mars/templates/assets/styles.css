@@ -1,3 +1,7 @@
+.img-featured {
+    max-width: 100%;
+    max-height: auto;
+}
 .styled {
     border: 0;
     line-height: 2.5;

@@ -6,10 +6,10 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Mission to Mars</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="assets/styles.css"> -->
+        <link rel="stylesheet" href="assets/styles.css">
     </head>
     <body>
-        <!-- <div class="container-fluid">
+        <div class="container-fluid">
             <div class="jumbotron text-center">
                 <h1>Mission to Mars</h1>
                 <a class="button" href="/scrape">Scrape New Data</a>
@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col">
                           <h3>Featured Mars Image</h3>
-                          <img>
+                          <img src="{{ mars_record.featured_image_url }}" class="img-featured" alt="Mars Featured Image">
                         </div>
                         <div class="col">
                             <h3>Mars Facts</h3>
@@ -50,12 +50,12 @@
 
             </div>
 
-        </div> -->
+        </div>
             
         
         <a href="/scrape">Scrape Now!</a>
 
-        <li>{{ mars_record }}</li>
+        <li>{{ mars_record["news_title"] }}</li>
 
     </body>
 </html>
