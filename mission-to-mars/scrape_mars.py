@@ -110,9 +110,9 @@ def scrape_all():
              "mars_facts" : facts_html,
              "hemispheres" : hemisphere_img_urls
             }
+    
 
 
-def insert_into_mongo():
 # insert to mongoDB
 # --------------------------
 
@@ -129,7 +129,10 @@ def insert_into_mongo():
     print(mars_dict)
 
 # insert to data to mars_info collection
-    rec = data.insert_one(mars_dict)
+    data.insert_one(mars_dict)
+
+    record = db.mars_info.find_one()
+    print("SCRAPE AFTER INSERT" + record)
     
 
 

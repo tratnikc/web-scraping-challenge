@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Mission to Mars</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/styles.css">
+        <!-- <link rel="stylesheet" href="assets/styles.css"> -->
     </head>
     <body>
         <!-- <div class="container-fluid">
@@ -16,7 +16,7 @@
             </div>
 
             <div>
-                {% for record in mars_record %}
+
                 <div class="container">
                     <div class="row">
                       <div class="col">
@@ -47,7 +47,7 @@
   
                     
                 </div>
-                {% endfor %}
+
             </div>
 
         </div> -->
@@ -55,9 +55,7 @@
         
         <a href="/scrape">Scrape Now!</a>
 
-        {% for rec in mars_record %}
-        <li>{{ rec.news_title }}</li>
-        {% endfor %}
+        <li>{{ mars_record }}</li>
 
     </body>
 </html>
