@@ -22,7 +22,7 @@ def main():
     colname = db.mars_info
 
     #pull some data from mongo
-    record = mongo.db.mars_info.find_one()
+    record = list(colname.find_one())
     print(record)
     #show that data
     return render_template("index.html", mars_record = record)
