@@ -122,23 +122,24 @@ def scrape_all():
 # insert to mongoDB
 # --------------------------
 
-# setup connection to mongoDB
+    # setup connection to mongoDB
     conn = "mongodb://localhost:27017"
     client = pymongo.MongoClient(conn)
 
-# select database and collection to use; database is mars_db
+    # select database and collection to use; database is mars_db
     db = client.mars_db
 
+    # check for existing databases
     for x in client.list_databases():
         print(x)
 
-# collection is called mars_info
+    # collection is called mars_info
     data = db.mars_info
 
-# insert to data to mars_info collection
-    data.insert_one(mars_dict)
+    # update current record, if not found then insert record to mars_info collection
+    data.update({}, mars_dict, upsert=True)
 
-    record = db.mars_info.find_one()
+    #record = db.mars_info.find_one()
     
 
 

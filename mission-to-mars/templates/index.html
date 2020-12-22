@@ -38,12 +38,12 @@
                 </div>
             </div>
             <br>
+
             <!-- hemispheres -->
 
             <h3 class="text-center">Mars Hemispheres</h3>
             <div class="container">
                 <hr>
-                
                 <div class="card-deck">
                     <div class="col-md-12">
                         <div class="row">
@@ -54,28 +54,16 @@
                                     <img class="card-img-top" src="{{ img.img_url }}" alt="{{ img.title }}">
                                     <div class="card-body">
                                         <h6 class="card-title">{{ img.title }}</h6>
-                                    </div>
-                                
+                                    </div>  
                                 </div>
                             </div>
                             {% endfor %}
                         </div>
-
                     </div>
-                    
                 </div>
-                
-
             </div>   
-                
-
         </div>
-            
         
-        <a href="/scrape">Scrape Now!</a>
-
-        <li>{{ mars_record.hemispheres }}</li>
-
         <!-- bootstrap CDN -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

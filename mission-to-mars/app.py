@@ -20,9 +20,7 @@ mars = db.mars_info
 def main():
     #pull some data from mongo
     mars_record = db.mars_info.find_one()
-    # print("APP MAIN")
-    # print(mars_record)
-        
+    
     #show that data
     return render_template("index.html", mars_record = mars_record)
 
