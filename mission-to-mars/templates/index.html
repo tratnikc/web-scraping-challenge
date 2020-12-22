@@ -43,9 +43,10 @@
             <h3 class="text-center">Mars Hemispheres</h3>
             <div class="container">
                 <hr>
+                {% for img in mars_record.hemispheres %}
                 <div class="card-deck">
                     <div class="card">
-                      <img class="card-img-top" src="..." alt="Card image cap">
+                      <img class="card-img-top" src="{{ img.img_url }}" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">Card title</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -75,8 +76,9 @@
                           <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
                           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                         </div>
-                      </div>
+                    </div>
                   </div>
+                  {% endfor %}
 
             </div>   
                 
@@ -86,7 +88,7 @@
         
         <a href="/scrape">Scrape Now!</a>
 
-        <li>{{ mars_record["news_title"] }}</li>
+        <li>{{ mars_record.hemispheres }}</li>
 
         <!-- bootstrap CDN -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
