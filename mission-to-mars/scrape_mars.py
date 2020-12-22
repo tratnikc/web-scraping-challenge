@@ -4,24 +4,27 @@ from bs4 import BeautifulSoup as bs
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
-
 import pymongo
+
+mars_dict = {}
+
+def scrape_all():
 # chrome driver
-# initialize brower MAC
-def init_browser():
+# initialize browser MAC
+# ----------------------
     executable_path = {'executable_path': "/usr/local/bin/chromedriver"}
-    return Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=False)
 
 # NASA Mars News
-def scrape_info():
-    browser = init_browser()
-    # visit NASA Mars News website https://mars.nasa.gov/news/
+# visit NASA Mars News website https://mars.nasa.gov/news/
+# ---------------------------------------------------------
     url = 'https://mars.nasa.gov/news/'
     browser.visit(url)
 
     time.sleep(1)
-    
-    # scrape page into Soup
+
+# scrape page into Soup
+# ----------------------
     html = browser.html
     soup = bs(html, 'html.parser')
 
@@ -30,17 +33,10 @@ def scrape_info():
     for article in sidebar:
         news_title = article.find('div', class_ = 'content_title').get_text()
         news_paragraph = article.find('div', class_='article_teaser_body').get_text()
-    
-    # close the browser after scraping
-    browser.quit()
-
-    # return the title and paragraph
-    return news_title, news_paragraph
 
 
 # JPL Mars Space Images - Featured Image
-def mars_featured_image():
-    browser = init_browser()
+# --------------------------------------
     jpl_url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(jpl_url)
     image_button = browser.find_by_id('full_image')
@@ -57,15 +53,11 @@ def mars_featured_image():
     url = url[:-1]
 
     featured_image_url = url + img_url
-    
-    browser.quit()
-
-    return featured_image_url
 
 
 # Mars Facts
-def mars_facts():
-    browser = init_browser()
+# ------------------------------------------------
+
     facts_url = 'https://space-facts.com/mars/'
     browser.visit(facts_url)
 
@@ -75,20 +67,17 @@ def mars_facts():
 
     facts_df.set_index("Description", inplace=True)
 
-    facts_df
-    browser.quit()
-
-    return  # return data here
+# convert dataframe to html
+    facts_html = facts_df.to_html()
 
 
 # Mars Hemispheres
-def mars_hemisphere():
-    browser = init_browser()
+# -----------------------------------------
+
     h_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(h_url)
 
     hemi_url = h_url.split('search')[0]
-
 
     html = browser.html
     soup = bs(html, 'html.parser')
@@ -115,9 +104,34 @@ def mars_hemisphere():
             hemisphere_img_urls.append(dict_sphere)
 
     browser.quit()
+    mars_dict = {"news_title": news_title,
+             "news_paragraph" : news_paragraph,
+             "featured_image_url" : featured_image_url,
+             "mars_facts" : facts_html,
+             "hemispheres" : hemisphere_img_urls
+            }
 
-    return hemisphere_img_urls
 
+def insert_into_mongo():
+# insert to mongoDB
+# --------------------------
+
+# setup connection to mongoDB
+    conn = "mongodb://localhost:27017"
+    client = pymongo.MongoClient(conn)
+
+# select database and collection to use; database is mars_db
+    db = client.mars_db
+
+# collection is called mars_info
+    data = db.mars_info
+
+# insert to data to mars_info collection
+    data.insert(
+        [
+            mars_dict
+        ]
+    )
 
 
 

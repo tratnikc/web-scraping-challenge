@@ -1,18 +1,62 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mission to Mars</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Mission to Mars</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/styles.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron text-center">
+                <h1>Mission to Mars</h1>
+                <a class="button" href="/scrape">Scrape New Data</a>
+            </div>
 
-{% for movie in list %}
-<li>{{ movie }}</li>
-{% endfor %}
+            <div>
+                {% for record in mars_record %}
+                <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <h3>Latest Mars News</h3>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                          <h4>{{mars_record.news_title}}</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                          <p>{{mars_record.news_paragraph}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                          <h3>Featured Mars Image</h3>
+                          <img>
+                        </div>
+                        <div class="col">
+                            <h3>Mars Facts</h3>
+                            <img>
+                          </div>
+  
+                      </div>
+  
+                    
+                </div>
+                {% endfor %}
+            </div>
 
-
-<a href="/scrape">Scrape Now!</a>
-</body>
+        </div>
+    
+        {% for movie in list %}
+        <li>{{ movie }}</li>
+        {% endfor %}
+        
+        
+        <a href="/scrape">Scrape Now!</a>
+    </body>
+</html>
