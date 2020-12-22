@@ -126,12 +126,15 @@ def insert_into_mongo():
 # collection is called mars_info
     data = db.mars_info
 
+    print(mars_dict)
+
 # insert to data to mars_info collection
     data.insert(
         [
             mars_dict
         ]
     )
+    print('inserted')
 
 
 
