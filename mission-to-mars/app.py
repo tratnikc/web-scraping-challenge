@@ -11,7 +11,7 @@ app = Flask(__name__)
 conn = "mongodb://localhost:27017"
 client = pymongo.MongoClient(conn)
 # define database to use
-db = client.mars_db
+db = client.mission_to_mars
 #define collection
 mars = db.mars_info
 

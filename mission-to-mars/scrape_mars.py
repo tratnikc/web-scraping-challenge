@@ -72,7 +72,7 @@ def scrape_all():
     facts_df.set_index("Description", inplace=True)
 
 # convert dataframe to html
-    facts_html = facts_df.to_html()
+    facts_html = facts_df.to_html(justify='left')
     mars_dict['mars_facts'] = facts_html
 
 
@@ -127,7 +127,7 @@ def scrape_all():
     client = pymongo.MongoClient(conn)
 
     # select database and collection to use; database is mars_db
-    db = client.mars_db
+    db = client.mission_to_mars
 
     # check for existing databases
     for x in client.list_databases():
