@@ -117,30 +117,4 @@ def scrape_all():
     #          "hemispheres" : hemisphere_img_urls
     #         }
     
-
-
-    # insert to mongoDB
-    # --------------------------
-
-    # setup connection to mongoDB
-    conn = "mongodb://localhost:27017"
-    client = pymongo.MongoClient(conn)
-
-    # select database and collection to use; database is mission_to_mars
-    db = client.mission_to_mars
-
-    # check for existing databases
-    # for x in client.list_databases():
-    #     print(x)
-
-    # collection is called mars_info
-    data = db.mars_info
-
-    # update current record, if not found then insert record to mars_info collection
-    data.update({}, mars_dict, upsert=True)
-
-    #record = db.mars_info.find_one()
-    
-
-
-
+    return mars_dict
