@@ -19,11 +19,11 @@
 
 2. MongoDB and Flask Application
     * convert jupyter notebook into a Python script scrape_mars.py and return one python dictionary
+    * create a route called /scrape that will import scrape_mars.py and call scrape function, store the return value in Mongo as a python dictionary
+    * create a template HTML file called index.html that will take the mars data dictionary and display all of the appropriate HTML elements.
 
-### Methodology
-
+3. Screenshots of final application
 
 ### Screenshots
 
-
-###
+### Note: I have installed the chromedriver in my local machine to use Splinter.
