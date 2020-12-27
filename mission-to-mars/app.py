@@ -26,7 +26,9 @@ def main():
 
 @app.route("/scrape")
 def scrape(): 
-    scrape_all()
+    mars_dict = scrape_all()
+    # update current record, if not found then insert record to mars_info collection
+    mars.update({}, mars_dict, upsert=True)
     return redirect("/")
 
 
