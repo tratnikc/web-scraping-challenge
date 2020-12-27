@@ -25,6 +25,6 @@
 3. Screenshots of final application
 
 ### Screenshot
-![Mission to Mars](https://github.com/tratnikc/web-scraping-challenge/blob/main/screenshot/mission-to-mars.png)
+![Mission to Mars]
 
 ### Note: I have installed the chromedriver in my local machine to use Splinter.
