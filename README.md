@@ -26,5 +26,6 @@
 
 ### Screenshot
 ![Mission to Mars](https://github.com/tratnikc/web-scraping-challenge/blob/main/screenshots/mission_to_mars_01.png =400x400)
+<img src="https://github.com/tratnikc/web-scraping-challenge/blob/main/screenshots/mission_to_mars_01.png" width="100" height="100"/>
 
 ### Note: I have installed the chromedriver in my local machine to use Splinter.
