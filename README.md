@@ -8,7 +8,7 @@
 2. scrape_mars.py
 3. app.py
 4. index.html in templates folder
-5. mission_to_mars_01.png mission_to_mars_02.png and in screenshots folder
+5. mission_to_mars_01.png and mission_to_mars_02.png in screenshots folder
 
 ### Requirements
 1. Scraping
