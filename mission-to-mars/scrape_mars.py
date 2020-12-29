@@ -71,7 +71,7 @@ def scrape_all():
     facts_df.set_index("Description", inplace=True)
 
 # convert dataframe to html
-    facts_html = facts_df.to_html(justify='left')
+    facts_html = facts_df.to_html(justify='left', classes="table table-striped")
     mars_dict['mars_facts'] = facts_html
 
 

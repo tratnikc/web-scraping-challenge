@@ -19,21 +19,21 @@
             <!-- mars news -->
             <div class="container">
                 <h3>Latest Mars News</h3>
-                <h5>{{mars_record.news_title}}</h5>
-                <p>{{mars_record.news_paragraph}}</p>
+                <h5 style="color: slateblue;">{{mars_record.news_title}}</h5>
+                <p style="color: slateblue;">{{mars_record.news_paragraph}}</p>
             </div>
 
             <!-- featured image url -->
 
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-8">
+                    <div class="col">
                         <h3>Featured Mars Image</h3>
                         <img src="{{ mars_record.featured_image_url }}" style="max-width:100%;" alt="Mars Featured Image">
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-md-auto">
                         <h3 style="font-size: 24px;">Mars Facts</h3>
-                        <div style="font-size: 12px; text-align: start;">{{ mars_record.mars_facts |safe}}</div>
+                        <div style="font-size: 14px; text-align: start;">{{ mars_record.mars_facts |safe}}</div>
                     </div>
                 </div>
             </div>
