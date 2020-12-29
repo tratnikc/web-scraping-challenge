@@ -8,7 +8,7 @@
 2. scrape_mars.py
 3. app.py
 4. index.html in templates folder
-5. mission-to-mars.png in screenshot folder
+5. mission_to_mars_01.png mission_to_mars_02.png and in screenshots folder
 
 ### Requirements
 1. Scraping
@@ -25,6 +25,6 @@
 3. Screenshots of final application
 
 ### Screenshot
-![Mission to Mars](https://github.com/tratnikc/web-scraping-challenge/blob/main/screenshot/mission-to-mars.png)
+![Mission to Mars](https://github.com/tratnikc/web-scraping-challenge/blob/main/screenshots/mission_to_mars_01.png =400x)
 
 ### Note: I have installed the chromedriver in my local machine to use Splinter.
